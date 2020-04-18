@@ -1,0 +1,27 @@
+<div class="container" id="box">
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+      <h2 class="heading">Login Form</h2>
+        <div class="container">
+            <label><b>Email</b></label> 
+            <input [class.is-invalid]="LoginForm.get('email').invalid && LoginForm.get('email').touched" formControlName="email" type="text" placeholder="Enter Username" required> 
+            <div *ngIf = "LoginForm.get('email').invalid && LoginForm.get('email').touched">
+                <small *ngIf="LoginForm.get('email').errors?.required"  class="text-danger">Email is required</small>
+                <small  *ngIf="LoginForm.get('email').errors?.minlength" class="text-danger">Use correct format of Email</small>
+            </div>
+  
+            <label><b>Password</b></label> 
+            <input [class.is-invalid]="LoginForm.get('password').invalid && LoginForm.get('password').touched" formControlName="password" type="password" placeholder="Enter Password" required> 
+            <div *ngIf = "LoginForm.get('password').invalid && LoginForm.get('password').touched">
+                <small *ngIf="LoginForm.get('password').errors?.required"  class="text-danger">Password is required</small>
+                <small  *ngIf="LoginForm.get('password').errors?.minlength" class="text-danger">Password must be at least 8 characters</small>
+            </div>
+            <button type="submit" >Login</button> 
+            <input type="checkbox" checked="checked"> Remember me 
+        </div> 
+  
+        <div class="container" style="background-color:#f1f1f1"> 
+            <span class="psw"><a routerLink="/register">Create a new Account</a></span> 
+        </div> 
+    </form> 
+</div>
+  

@@ -1,0 +1,60 @@
+<div class="container" id="box">
+    {{registrationForm.value | json}}
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <h2 class="heading">Login Form</h2>
+        <div class="container"> 
+            <label><b>First name</b></label> 
+            <input [class.is-invalid]="registrationForm.get('first_name').invalid && registrationForm.get('first_name').touched" formControlName="first_name"  type="text" placeholder="Enter Username" required> 
+            <!-- <small class="text-danger" [class.d-none]="registrationForm.get('first_name').invalid && registrationForm.get('first_name').untouched">First Name is required</small><br> -->
+            <div *ngIf = "registrationForm.get('first_name').invalid && registrationForm.get('first_name').touched">
+                <small *ngIf="registrationForm.get('first_name').errors?.required"  class="text-danger">First Name is required</small>
+                <small  *ngIf="registrationForm.get('first_name').errors?.minlength" class="text-danger">First Name must be at least 3 characters</small>
+            </div>
+
+            <label><b>Last name</b></label> 
+            <input [class.is-invalid]="registrationForm.get('last_name').invalid && registrationForm.get('last_name').touched" formControlName="last_name" type="text" placeholder="Enter Username" required> 
+            <div *ngIf = "registrationForm.get('last_name').invalid && registrationForm.get('last_name').touched">
+                <small *ngIf="registrationForm.get('last_name').errors?.required"  class="text-danger">Last Name is required</small>
+                <small  *ngIf="registrationForm.get('last_name').errors?.minlength" class="text-danger">Last Name must be at least 3 characters</small>
+            </div>
+
+            <label><b>Email</b></label> 
+            <input [class.is-invalid]="registrationForm.get('email').invalid && registrationForm.get('email').touched" formControlName="email" type="text" placeholder="Enter Username" required> 
+            <div *ngIf = "registrationForm.get('email').invalid && registrationForm.get('email').touched">
+                <small *ngIf="registrationForm.get('email').errors?.required"  class="text-danger">Email is required</small>
+                <small  *ngIf="registrationForm.get('email').errors?.minlength" class="text-danger">Use correct format of Email</small>
+            </div>
+  
+            <label><b>Password</b></label> 
+            <input [class.is-invalid]="registrationForm.get('password').invalid && registrationForm.get('password').touched" formControlName="password" type="password" placeholder="Enter Password" required> 
+            <div *ngIf = "registrationForm.get('password').invalid && registrationForm.get('password').touched">
+                <small *ngIf="registrationForm.get('password').errors?.required"  class="text-danger">Password is required</small>
+                <small  *ngIf="registrationForm.get('password').errors?.minlength" class="text-danger">Password must be at least 8 characters</small>
+            </div>
+
+            <label><b>Confirm Password</b></label>
+            <input [class.is-invalid]="registrationForm.get('c_password').invalid && registrationForm.get('c_password').touched" formControlName="c_password" type="password" placeholder="Confirm Password"> 
+            <div *ngIf = "registrationForm.get('c_password').invalid && registrationForm.get('c_password').touched">
+                <small *ngIf="registrationForm.get('c_password').errors?.required"  class="text-danger">Confirm password is required</small>
+                <small  *ngIf="registrationForm.get('c_password').errors?.minlength" class="text-danger">Confirm Password must be at least 8 characters</small>
+            </div>
+
+            <label><b>Phone Number</b></label>
+            <input [class.is-invalid]="registrationForm.get('mobile').invalid && registrationForm.get('mobile').touched" formControlName="mobile" type="text" placeholder="Mobile No."> 
+            <div *ngIf = "registrationForm.get('mobile').invalid && registrationForm.get('mobile').touched">
+                <small *ngIf="registrationForm.get('mobile').errors?.required"  class="text-danger">Mobile is required</small>
+                <small  *ngIf="registrationForm.get('mobile').errors?.minlength" class="text-danger">Password must be at least 8 characters</small>
+            </div>
+
+            <button type="submit">Register</button>
+            <button type="submit" (click)="loadApiData()">Load Api</button> 
+            <input type="checkbox" checked="checked"> Remember me 
+        </div> 
+  
+        <div class="container" style="background-color:#f1f1f1"> 
+            <span class="psw"><a routerLink="/login" routerLinkActive="">Sign Up</a></span> 
+        </div> 
+    </form> 
+    
+</div>
+  
